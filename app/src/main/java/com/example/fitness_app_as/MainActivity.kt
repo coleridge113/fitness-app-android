@@ -1,5 +1,6 @@
 package com.example.fitness_app_as
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.example.fitness_app_as.network.RetrofitInstance
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
+import kotlin.toString
 
 const val TAG = "MainActivity"
 
@@ -39,11 +41,22 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Log.e(TAG,"Response not successful: ${response.isSuccessful}, ${response.code()}")
             }
+
+            try{
+                val ex = RetrofitInstance.api.getExerciseById(4).body()
+                Log.d(TAG, ex.toString())
+            } catch (e: Exception) {
+                Log.e(TAG, e.toString())
+            }
         }
     }
 
     private fun setupRecyclerView() = binding.recyclerView.apply {
-        exerciseAdapter = ExerciseAdapter()
+        exerciseAdapter = ExerciseAdapter { exercise ->
+            val intent = Intent(this@MainActivity, ExerciseActivity::class.java)
+            intent.putExtra("exercise", exercise)
+            startActivity(intent)
+        }
         adapter = exerciseAdapter
         layoutManager = LinearLayoutManager(this@MainActivity)
     }

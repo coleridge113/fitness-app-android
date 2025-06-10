@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness_app_as.databinding.ExerciseItemBinding
 import com.example.fitness_app_as.domain.Exercise
 
-class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ExerciseItemViewHolder>() {
+class ExerciseAdapter(
+    private val onItemClick:(Exercise) -> Unit
+) : RecyclerView.Adapter<ExerciseAdapter.ExerciseItemViewHolder>() {
 
     inner class ExerciseItemViewHolder(val binding: ExerciseItemBinding): RecyclerView.ViewHolder(binding.root){
         val textView = binding.textView
@@ -51,6 +53,9 @@ class ExerciseAdapter() : RecyclerView.Adapter<ExerciseAdapter.ExerciseItemViewH
         holder.binding.apply {
             val exercise = exercises[position]
             textView.text = exercise.name
+            textView.setOnClickListener {
+                onItemClick(exercise)
+            }
         }
     }
 
