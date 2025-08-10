@@ -20,8 +20,4 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    @Provides
-    @Singleton
-    fun provideExerciseService(retrofit: Retrofit): ExerciseService =
-        retrofit.create(ExerciseService::class.java)
 }
