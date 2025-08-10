@@ -26,28 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         lifecycleScope.launch {
-            val response = try {
-                RetrofitInstance.api.getExerciseItems()
-            } catch (e: IOException) {
-                Log.e(TAG, "IOException: $e")
-                return@launch
-            } catch (e: HttpException) {
-                Log.e(TAG,"HttpException: $e")
-                return@launch
-            }
-            if(response.isSuccessful && response.body() != null){
-                setupRecyclerView()
-                exerciseAdapter.exercises = response.body()!!
-            } else {
-                Log.e(TAG,"Response not successful: ${response.isSuccessful}, ${response.code()}")
-            }
-
-            try{
-                val ex = RetrofitInstance.api.getExerciseById(4).body()
-                Log.d(TAG, ex.toString())
-            } catch (e: Exception) {
-                Log.e(TAG, e.toString())
-            }
+            getExerciseData()
         }
     }
 
@@ -59,5 +38,23 @@ class MainActivity : AppCompatActivity() {
         }
         adapter = exerciseAdapter
         layoutManager = LinearLayoutManager(this@MainActivity)
+    }
+
+    private suspend fun getExerciseData() {
+        val response = try {
+            RetrofitInstance.api.getExerciseItems()
+        } catch (e: IOException) {
+            Log.e(TAG, "IOException: $e")
+            return
+        } catch (e: HttpException) {
+            Log.e(TAG,"HttpException: $e")
+            return
+        }
+        if(response.isSuccessful && response.body() != null){
+            setupRecyclerView()
+            exerciseAdapter.exercises = response.body()!!
+        } else {
+            Log.e(TAG,"Response not successful: ${response.isSuccessful}, ${response.code()}")
+        }
     }
 }

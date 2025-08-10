@@ -1,4 +1,4 @@
-package com.example.fitness_app_as.network
+package com.example.fitness_app_as.network.exercise
 
 import com.example.fitness_app_as.domain.Exercise
 import retrofit2.Response

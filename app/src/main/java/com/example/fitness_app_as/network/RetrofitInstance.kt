@@ -1,5 +1,6 @@
 package com.example.fitness_app_as.network
 
+import com.example.fitness_app_as.network.exercise.ExerciseService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
