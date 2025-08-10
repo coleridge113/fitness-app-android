@@ -14,7 +14,7 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Fitnessappas">
+        android:theme="@style/Theme.FitnessApp">
         <activity
             android:name=".feature.exercise.ExerciseDetailsActivity"
             android:exported="true" />
