@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app_as.feature.exercise.ExerciseDetailsActivity
 import com.example.fitness_app_as.databinding.ActivityMainBinding
-import com.example.fitness_app_as.domain.Exercise
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -20,20 +19,21 @@ class MainActivity : AppCompatActivity() {
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainAdapter: MainAdapter
-    private var exercises: List<Exercise> = emptyList()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupObservers()
         loadData()
         setupView()
     }
 
 
-    private fun loadData(){}
+    private fun loadData(){
+        mainViewModel.getExerciseItems()
+    }
 
     private fun setupView() {
         setupRecyclerView()
