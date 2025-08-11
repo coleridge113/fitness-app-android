@@ -25,14 +25,17 @@ class ExerciseDetailsActivity : AppCompatActivity() {
         exercise?.let {
             with(binding){
                 toolbar.toolbarTitle.text = it.name
-                primaryMuscle.text = it.primaryMuscle.replaceFirstChar { char -> char.uppercase() }
-                descriptionText.text = it.description
-                equipmentName.text = it.equipment
 
-                val link = "https://www.youtube.com/results?search_query=" + it.name.split(" ").joinToString("+")
-                val htmlText = "<a href=\"$link\">${it.name}</a>"
-                ytLink.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
-                ytLink.movementMethod = LinkMovementMethod.getInstance()
+                with(itemExerciseDetails){
+                    primaryMuscle.text = it.primaryMuscle.replaceFirstChar { char -> char.uppercase() }
+                    descriptionText.text = it.description
+                    equipmentName.text = it.equipment
+
+                    val link = "https://www.youtube.com/results?search_query=" + it.name.split(" ").joinToString("+")
+                    val htmlText = "<a href=\"$link\">${it.name}</a>"
+                    ytLink.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
+                    ytLink.movementMethod = LinkMovementMethod.getInstance()
+                }
 
             }
         }
