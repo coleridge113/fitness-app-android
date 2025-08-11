@@ -66,4 +66,7 @@ dependencies {
     //Hilt Dagger
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    //Swipe Refresh
+    implementation(libs.androidx.swiperefreshlayout)
 }

@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         setupObservers()
         loadData()
         setupView()
+        setupListeners()
     }
 
 
@@ -42,11 +43,20 @@ class MainActivity : AppCompatActivity() {
     private fun setupObservers() {
         lifecycleScope.launch {
             mainViewModel.mainState.collect { state ->
+                binding.swipeRefresh.isRefreshing = false
                 when(state) {
-                    is MainState.LoadExercises ->
+                    is MainState.LoadExercises -> {
                         mainAdapter.exercises = state.exercises
-                    else -> Log.d(TAG, "setupObservers: Something went wrong")
+                    }
                 }
+            }
+        }
+    }
+
+    private fun setupListeners(){
+        with(binding){
+            swipeRefresh.setOnRefreshListener {
+                mainViewModel.getExerciseItems()
             }
         }
     }
