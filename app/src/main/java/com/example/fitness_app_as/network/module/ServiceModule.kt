@@ -14,6 +14,7 @@ class ServiceModule {
 
     @Provides
     @Singleton
-    fun provideExerciseService(retrofit: Retrofit): ExerciseService =
-        retrofit.create(ExerciseService::class.java)
+    fun provideExerciseService(retrofit: Retrofit): ExerciseService {
+        return retrofit.create(ExerciseService::class.java)
+    }
 }

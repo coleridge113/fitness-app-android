@@ -15,6 +15,4 @@ interface ExerciseService {
 
     @GET("exercise/muscle/{primaryMuscle}")
     suspend fun getExerciseByPrimaryMuscle(@Path("primaryMuscle") primaryMuscle: String): Response<List<Exercise>>
-
-
 }
