@@ -5,22 +5,22 @@ import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fitness_app_as.databinding.ActivityExerciseBinding
+import com.example.fitness_app_as.databinding.ActivityExerciseDetailsBinding
 import com.example.fitness_app_as.domain.Exercise
 
 class ExerciseDetailsActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityExerciseBinding
+    private lateinit var binding: ActivityExerciseDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityExerciseBinding.inflate(layoutInflater)
+        binding = ActivityExerciseDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val exercise = intent.getSerializableExtra("exercise", Exercise::class.java)
 
         exercise?.let {
             with(binding){
-                exerciseName.text = it.name
+                toolbar.toolbarTitle.text = it.name
                 primaryMuscle.text = it.primaryMuscle.replaceFirstChar { char -> char.uppercase() }
                 descriptionText.text = it.description
                 equipmentName.text = it.equipment
