@@ -43,12 +43,11 @@ class MainActivity : AppCompatActivity() {
     private fun setupObservers() {
         lifecycleScope.launch {
             mainViewModel.mainState.collect { state ->
+                binding.swipeRefresh.isRefreshing = false
                 when(state) {
                     is MainState.LoadExercises -> {
                         mainAdapter.exercises = state.exercises
-                        binding.swipeRefresh.isRefreshing = false
                     }
-                    else -> {}
                 }
             }
         }
