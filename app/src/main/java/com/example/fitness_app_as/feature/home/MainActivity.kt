@@ -1,10 +1,15 @@
 package com.example.fitness_app_as.feature.home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app_as.feature.exercise.ExerciseDetailsActivity
@@ -38,6 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupView() {
         setupRecyclerView()
+        setupToolbar()
     }
 
     private fun setupObservers() {
@@ -71,5 +77,12 @@ class MainActivity : AppCompatActivity() {
             adapter = mainAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
+    }
+
+    private fun setupToolbar() {
+        with(binding.toolbar){
+            backButton.visibility = View.GONE
+        }
+
     }
 }
