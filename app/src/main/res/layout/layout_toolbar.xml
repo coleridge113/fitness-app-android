@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Exercise"
-        android:textSize="20sp"
+        android:textSize="21sp"
         android:textColor="@color/white"
         android:gravity="center"
         tools:ignore="HardcodedText"
