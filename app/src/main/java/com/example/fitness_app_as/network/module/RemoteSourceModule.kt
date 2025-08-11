@@ -14,7 +14,7 @@ class RemoteSourceModule {
 
     @Provides
     @Singleton
-    fun providesRemoteSource(exerciseService: ExerciseService): ExerciseRemoteSource {
+    fun provideExerciseRemoteSource(exerciseService: ExerciseService): ExerciseRemoteSource {
         return ExerciseRemoteSource(exerciseService)
     }
 }
