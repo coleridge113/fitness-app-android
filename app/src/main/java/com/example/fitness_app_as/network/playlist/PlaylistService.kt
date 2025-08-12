@@ -20,5 +20,5 @@ interface PlaylistService {
     suspend fun createPlaylist(@Body playlist: Playlist): Response<String>
 
     @DELETE("/playlist/{id}")
-    suspend fun deletePLaylist(@Path("id") id: Int): Response<String>
+    suspend fun deletePlaylist(@Path("id") id: Int): Response<String>
 }
