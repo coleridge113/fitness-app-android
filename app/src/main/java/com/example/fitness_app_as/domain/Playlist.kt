@@ -5,5 +5,5 @@ import java.io.Serializable
 data class Playlist(
     val id: Int,
     val name: String,
-    val exerciseIds: List<Exercise>
+    val exerciseIds: List<Int>
 ) : Serializable

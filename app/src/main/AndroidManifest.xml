@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessApp">
         <activity
+            android:name=".feature.playlist.PlaylistActivity"
+            android:exported="false" />
+        <activity
             android:name=".feature.exercise.ExerciseDetailsActivity"
             android:exported="true" />
         <activity
