@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app_as.feature.exercise.ExerciseDetailsActivity
 import com.example.fitness_app_as.databinding.ActivityMainBinding
+import com.example.fitness_app_as.feature.playlist.PlaylistActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -58,6 +59,12 @@ class MainActivity : AppCompatActivity() {
         with(binding){
             swipeRefresh.setOnRefreshListener {
                 mainViewModel.getExerciseItems()
+            }
+
+            // for testing purposes
+            toolbar.toolbarTitle.setOnClickListener {
+                val intent = Intent(this@MainActivity, PlaylistActivity::class.java)
+                startActivity(intent)
             }
         }
     }

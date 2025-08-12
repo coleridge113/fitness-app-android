@@ -1,0 +1,62 @@
+package com.example.fitness_app_as.feature.playlist
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
+import com.example.fitness_app_as.databinding.PlaylistItemBinding
+import com.example.fitness_app_as.domain.Playlist
+
+class PlaylistAdapter(
+    private val onItemClick: (Playlist) -> Unit
+) : RecyclerView.Adapter<PlaylistAdapter.PlaylistItemViewHolder>() {
+
+    inner class PlaylistItemViewHolder(val binding: PlaylistItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val textView = binding.textView
+    }
+
+    private val diffCallback = object : DiffUtil.ItemCallback<Playlist>() {
+        override fun areItemsTheSame(
+            oldItem: Playlist,
+            newItem: Playlist
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(
+            oldItem: Playlist,
+            newItem: Playlist
+        ): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    private val differ = AsyncListDiffer(this, diffCallback)
+    var playlists: List<Playlist>
+        get() = differ.currentList
+        set(value) { differ.submitList(value) }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): PlaylistItemViewHolder {
+        val binding = PlaylistItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return PlaylistItemViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(
+        holder: PlaylistItemViewHolder,
+        position: Int
+    ) {
+        holder.binding.apply {
+            val playlist = playlists[position]
+            textView.text = playlist.name
+            textView.setOnClickListener {
+                onItemClick(playlist)
+            }
+        }
+    }
+
+    override fun getItemCount(): Int { return playlists.size }
+}

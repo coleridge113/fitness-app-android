@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">fitness-app</string>
+
+    // Exercise
+    <string name="exercise_toolbar_title">Exercise</string>
+
+    // Playlist
+    <string name="playlist_toolbar_title">Playlist</string>
+
 </resources>
