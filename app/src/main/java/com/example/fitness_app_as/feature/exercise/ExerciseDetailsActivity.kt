@@ -1,8 +1,6 @@
 package com.example.fitness_app_as.feature.exercise
 
 import android.os.Bundle
-import android.text.Html
-import android.text.method.LinkMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness_app_as.databinding.ActivityExerciseDetailsBinding
 import com.example.fitness_app_as.domain.Exercise
