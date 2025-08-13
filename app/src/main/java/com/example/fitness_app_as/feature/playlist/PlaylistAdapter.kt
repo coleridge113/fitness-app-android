@@ -1,5 +1,6 @@
 package com.example.fitness_app_as.feature.playlist
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -9,6 +10,7 @@ import com.example.fitness_app_as.databinding.PlaylistItemBinding
 import com.example.fitness_app_as.domain.Playlist
 
 class PlaylistAdapter(
+    private val context: Context,
     private val onItemClick: (Playlist) -> Unit
 ) : RecyclerView.Adapter<PlaylistAdapter.PlaylistItemViewHolder>() {
 

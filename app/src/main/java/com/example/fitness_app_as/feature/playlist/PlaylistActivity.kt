@@ -7,6 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app_as.R
 import com.example.fitness_app_as.databinding.ActivityPlaylistBinding
+import com.example.fitness_app_as.domain.Exercise
+import com.example.fitness_app_as.feature.playlist.playlistDetails.PlaylistDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -15,6 +17,7 @@ class PlaylistActivity : AppCompatActivity() {
     private val playlistViewModel: PlaylistViewModel by viewModels()
     private lateinit var binding: ActivityPlaylistBinding
     private lateinit var playlistAdapter: PlaylistAdapter
+    private lateinit var exercises: List<Exercise>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +55,10 @@ class PlaylistActivity : AppCompatActivity() {
                     is PlaylistState.LoadPlaylists -> {
                         playlistAdapter.playlists = state.playlists
                     }
+
+                    is PlaylistState.LoadExercises -> {
+                        exercises = state.exercises
+                    }
                 }
             }
         }
@@ -59,8 +66,24 @@ class PlaylistActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
-            playlistAdapter = PlaylistAdapter {
-                TODO()
+            playlistAdapter = PlaylistAdapter(this@PlaylistActivity) { playlist ->
+                playlistViewModel.getExercisesForPlaylist(playlist)
+
+                val fragment = PlaylistDetailsFragment()
+                val args = Bundle()
+                args.putSerializable("playlist", playlist)
+                fragment.arguments = args
+
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.slide_in_right,
+                        R.anim.slide_out_left,
+                        R.anim.slide_in_left,
+                        R.anim.slide_out_right
+                    )
+                    .replace(R.id.playlist_details_container, fragment)
+                    .addToBackStack(null)
+                    .commit()
             }
             adapter = playlistAdapter
             layoutManager = LinearLayoutManager(this@PlaylistActivity)

@@ -69,4 +69,7 @@ dependencies {
 
     //Swipe Refresh
     implementation(libs.androidx.swiperefreshlayout)
+
+    //Fragment
+    implementation(libs.androidx.fragment.ktx)
 }
