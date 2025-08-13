@@ -8,5 +8,6 @@ data class Exercise(
     val primaryMuscle: String,
     val secondaryMuscle: String,
     val equipment: String,
-    val description: String
+    val description: String,
+    var ytLink: String
 ) : Serializable

@@ -33,6 +33,8 @@ class ExerciseDetailsActivity : AppCompatActivity() {
 
                     val link = "https://www.youtube.com/results?search_query=" + it.name.split(" ").joinToString("+")
                     val htmlText = "<a href=\"$link\">${it.name}</a>"
+
+                    exercise.ytLink = link
                     ytLink.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
                     ytLink.movementMethod = LinkMovementMethod.getInstance()
                 }
