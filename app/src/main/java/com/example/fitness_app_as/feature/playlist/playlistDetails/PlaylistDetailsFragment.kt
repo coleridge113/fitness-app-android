@@ -8,8 +8,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app_as.databinding.FragmentPlaylistDetailsBinding
 import com.example.fitness_app_as.domain.Playlist
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import com.example.fitness_app_as.feature.playlist.PlaylistState
+import com.example.fitness_app_as.feature.playlist.PlaylistViewModel
+import kotlinx.coroutines.launch
 
-class PlaylistDetailsFragment : Fragment() {
+class PlaylistDetailsFragment() : Fragment() {
+    private val playlistViewModel: PlaylistViewModel by activityViewModels()
     private lateinit var playlistDetailsAdapter: PlaylistDetailsAdapter
     private lateinit var binding: FragmentPlaylistDetailsBinding
 
@@ -17,7 +23,7 @@ class PlaylistDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        playlist = arguments?.getSerializable("playlist") as? Playlist
+        playlist = arguments?.getSerializable("playlist", Playlist::class.java)
     }
 
     override fun onCreateView(
@@ -32,10 +38,27 @@ class PlaylistDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         loadData()
+        setupObservers()
         setupView()
     }
 
     private fun loadData(){
+        playlist?.let { playlistViewModel.getExercisesForPlaylist(it) }
+    }
+
+    private fun setupObservers() {
+        lifecycleScope.launch {
+            playlistViewModel.playlistState.collect { state ->
+                when(state) {
+                    is PlaylistState.LoadExercises -> {
+                        playlistDetailsAdapter.exercises = state.exercises
+                    }
+
+                    is PlaylistState.LoadPlaylists -> TODO()
+                }
+            }
+
+        }
     }
 
     private fun setupView() {
@@ -46,12 +69,10 @@ class PlaylistDetailsFragment : Fragment() {
         }
 
         setupRecycleView()
-
-
     }
 
     private fun setupToolbar() {
-        binding.toolbar.toolbarTitle.text = "Test"
+        binding.toolbar.toolbarTitle.text = ""
     }
 
     private fun setupRecycleView() {

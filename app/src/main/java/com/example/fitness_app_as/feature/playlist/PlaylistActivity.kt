@@ -72,7 +72,6 @@ class PlaylistActivity : AppCompatActivity() {
                 val fragment = PlaylistDetailsFragment()
                 val args = Bundle()
                 args.putSerializable("playlist", playlist)
-                args.putParcelableArrayList("exercises", exercises)
                 fragment.arguments = args
 
                 supportFragmentManager.beginTransaction()

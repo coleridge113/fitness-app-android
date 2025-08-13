@@ -32,7 +32,7 @@ class PlaylistViewModel @Inject constructor(
     fun getExercisesForPlaylist(playlist: Playlist) {
         viewModelScope.launch {
             val exercises = exerciseRemoteSource.getExerciseItems()
-            val filteredExercises = exercises.filter { it.id in playlist.exerciseIds }
+            val filteredExercises = exercises.filter { it.id.toInt() in playlist.exerciseIds }
             mutablePlaylistState.emit(PlaylistState.LoadExercises(filteredExercises))
         }
     }
