@@ -54,7 +54,7 @@ class PlaylistDetailsFragment() : Fragment() {
                         playlistDetailsAdapter.exercises = state.exercises
                     }
 
-                    is PlaylistState.LoadPlaylists -> TODO()
+                    is PlaylistState.LoadPlaylists -> {}
                 }
             }
 
