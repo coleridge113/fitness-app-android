@@ -6,6 +6,7 @@ import android.text.method.LinkMovementMethod
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fitness_app_as.databinding.ActivityExerciseDetailsBinding
 import com.example.fitness_app_as.domain.Exercise
+import com.example.fitness_app_as.utilities.Utilities
 
 class ExerciseDetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExerciseDetailsBinding
@@ -31,12 +32,7 @@ class ExerciseDetailsActivity : AppCompatActivity() {
                     descriptionText.text = it.description
                     equipmentName.text = it.equipment
 
-                    val link = "https://www.youtube.com/results?search_query=" + it.name.split(" ").joinToString("+")
-                    val htmlText = "<a href=\"$link\">${it.name}</a>"
-
-                    exercise.ytLink = link
-                    ytLink.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)
-                    ytLink.movementMethod = LinkMovementMethod.getInstance()
+                    Utilities.embedYTLink(exercise.name, itemExerciseDetails.ytLink)
                 }
 
             }
