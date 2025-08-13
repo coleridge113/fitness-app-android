@@ -5,7 +5,17 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 
 object Utilities {
-    fun embedYTLink(text: String, tv: TextView){
+
+    /**
+     * Embeds a clickable YouTube search link into the provided TextView using the given text.
+     *
+     * This function constructs a YouTube search URL based on the provided text, formats it as an HTML hyperlink,
+     * and sets it as the content of the specified TextView. The TextView is also configured to handle link clicks.
+     *
+     * @param text The string to be used as the search query and hyperlink text.
+     * @param tv The TextView in which the hyperlink will be embedded.
+     */
+    fun embedYTLink(tv: TextView, text: String){
         val link = "https://www.youtube.com/results?search_query=" + text.split(" ").joinToString("+")
         val htmlText = "<a href=\"$link\">${text}</a>"
         tv.text = Html.fromHtml(htmlText, Html.FROM_HTML_MODE_COMPACT)

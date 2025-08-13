@@ -32,7 +32,7 @@ class ExerciseDetailsActivity : AppCompatActivity() {
                     descriptionText.text = it.description
                     equipmentName.text = it.equipment
 
-                    Utilities.embedYTLink(exercise.name, itemExerciseDetails.ytLink)
+                    Utilities.embedYTLink(itemExerciseDetails.ytLink, exercise.name)
                 }
 
             }
