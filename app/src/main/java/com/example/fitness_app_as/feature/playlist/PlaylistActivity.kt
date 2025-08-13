@@ -7,7 +7,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitness_app_as.R
 import com.example.fitness_app_as.databinding.ActivityPlaylistBinding
-import com.example.fitness_app_as.domain.Exercise
 import com.example.fitness_app_as.feature.playlist.playlistDetails.PlaylistDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -17,7 +16,6 @@ class PlaylistActivity : AppCompatActivity() {
     private val playlistViewModel: PlaylistViewModel by viewModels()
     private lateinit var binding: ActivityPlaylistBinding
     private lateinit var playlistAdapter: PlaylistAdapter
-    private lateinit var exercises: List<Exercise>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,9 +54,7 @@ class PlaylistActivity : AppCompatActivity() {
                         playlistAdapter.playlists = state.playlists
                     }
 
-                    is PlaylistState.LoadExercises -> {
-                        exercises = state.exercises
-                    }
+                    is PlaylistState.LoadExercises -> {}
                 }
             }
         }
