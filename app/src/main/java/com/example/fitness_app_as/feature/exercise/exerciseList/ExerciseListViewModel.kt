@@ -1,4 +1,4 @@
-package com.example.fitness_app_as.feature.home
+package com.example.fitness_app_as.feature.exercise.exerciseList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,17 +10,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class ExerciseListViewModel @Inject constructor(
     private val exerciseRemoteSource: ExerciseRemoteSource
 ) : ViewModel() {
 
-    private val mutableMainState: MutableSharedFlow<MainState> = MutableSharedFlow()
-    val mainState = mutableMainState.asSharedFlow()
+    private val mutableExerciseListState: MutableSharedFlow<ExerciseListState> = MutableSharedFlow()
+    val exerciseListState = mutableExerciseListState.asSharedFlow()
 
     fun getExerciseItems() {
         viewModelScope.launch {
             val exercises = exerciseRemoteSource.getExerciseItems()
-            mutableMainState.emit(MainState.LoadExercises(exercises))
+            mutableExerciseListState.emit(ExerciseListState.LoadExercises(exercises))
         }
     }
 

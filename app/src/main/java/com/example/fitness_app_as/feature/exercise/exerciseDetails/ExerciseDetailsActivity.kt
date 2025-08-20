@@ -1,4 +1,4 @@
-package com.example.fitness_app_as.feature.exercise
+package com.example.fitness_app_as.feature.exercise.exerciseDetails
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

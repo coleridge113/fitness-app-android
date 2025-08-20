@@ -1,4 +1,4 @@
-package com.example.fitness_app_as.feature.home
+package com.example.fitness_app_as.feature.exercise.exerciseList
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,23 +7,23 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fitness_app_as.feature.exercise.ExerciseDetailsActivity
-import com.example.fitness_app_as.databinding.ActivityMainBinding
+import com.example.fitness_app_as.databinding.ActivityExerciseListBinding
+import com.example.fitness_app_as.feature.exercise.exerciseDetails.ExerciseDetailsActivity
 import com.example.fitness_app_as.feature.playlist.PlaylistActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-const val TAG = "MainActivity"
+const val TAG = "ExerciseListActivity"
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private val mainViewModel: MainViewModel by viewModels()
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mainAdapter: MainAdapter
+class ExerciseListActivity : AppCompatActivity() {
+    private val exerciseListViewModel: ExerciseListViewModel by viewModels()
+    private lateinit var binding: ActivityExerciseListBinding
+    private lateinit var exerciseListAdapter: ExerciseListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityExerciseListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupObservers()
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun loadData(){
-        mainViewModel.getExerciseItems()
+        exerciseListViewModel.getExerciseItems()
     }
 
     private fun setupView() {
@@ -44,11 +44,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         lifecycleScope.launch {
-            mainViewModel.mainState.collect { state ->
+            exerciseListViewModel.exerciseListState.collect { state ->
                 binding.swipeRefresh.isRefreshing = false
                 when(state) {
-                    is MainState.LoadExercises -> {
-                        mainAdapter.exercises = state.exercises
+                    is ExerciseListState.LoadExercises -> {
+                        exerciseListAdapter.exercises = state.exercises
                     }
                 }
             }
@@ -58,12 +58,12 @@ class MainActivity : AppCompatActivity() {
     private fun setupListeners(){
         with(binding){
             swipeRefresh.setOnRefreshListener {
-                mainViewModel.getExerciseItems()
+                exerciseListViewModel.getExerciseItems()
             }
 
             // for testing purposes
             toolbar.toolbarTitle.setOnClickListener {
-                val intent = Intent(this@MainActivity, PlaylistActivity::class.java)
+                val intent = Intent(this@ExerciseListActivity, PlaylistActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -71,13 +71,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         binding.recyclerView.apply {
-            mainAdapter = MainAdapter { exercise ->
-                val intent = Intent(this@MainActivity, ExerciseDetailsActivity::class.java)
+            exerciseListAdapter = ExerciseListAdapter { exercise ->
+                val intent = Intent(this@ExerciseListActivity, ExerciseDetailsActivity::class.java)
                 intent.putExtra("exercise", exercise)
                 startActivity(intent)
             }
-            adapter = mainAdapter
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = exerciseListAdapter
+            layoutManager = LinearLayoutManager(this@ExerciseListActivity)
         }
     }
 

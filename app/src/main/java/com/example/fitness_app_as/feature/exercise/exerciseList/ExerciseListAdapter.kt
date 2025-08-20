@@ -1,4 +1,4 @@
-package com.example.fitness_app_as.feature.home
+package com.example.fitness_app_as.feature.exercise.exerciseList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitness_app_as.databinding.ExerciseItemBinding
 import com.example.fitness_app_as.domain.Exercise
 
-class MainAdapter(
+class ExerciseListAdapter(
     private val onItemClick:(Exercise) -> Unit
-) : RecyclerView.Adapter<MainAdapter.ExerciseItemViewHolder>() {
+) : RecyclerView.Adapter<ExerciseListAdapter.ExerciseItemViewHolder>() {
 
     inner class ExerciseItemViewHolder(val binding: ExerciseItemBinding): RecyclerView.ViewHolder(binding.root)
 
