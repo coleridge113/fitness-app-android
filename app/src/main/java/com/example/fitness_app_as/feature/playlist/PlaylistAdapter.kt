@@ -14,9 +14,7 @@ class PlaylistAdapter(
     private val onItemClick: (Playlist) -> Unit
 ) : RecyclerView.Adapter<PlaylistAdapter.PlaylistItemViewHolder>() {
 
-    inner class PlaylistItemViewHolder(val binding: PlaylistItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val textView = binding.textView
-    }
+    inner class PlaylistItemViewHolder(val binding: PlaylistItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<Playlist>() {
         override fun areItemsTheSame(

@@ -12,9 +12,7 @@ class MainAdapter(
     private val onItemClick:(Exercise) -> Unit
 ) : RecyclerView.Adapter<MainAdapter.ExerciseItemViewHolder>() {
 
-    inner class ExerciseItemViewHolder(val binding: ExerciseItemBinding): RecyclerView.ViewHolder(binding.root){
-        val textView = binding.textView
-    }
+    inner class ExerciseItemViewHolder(val binding: ExerciseItemBinding): RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<Exercise>() {
         override fun areItemsTheSame(
