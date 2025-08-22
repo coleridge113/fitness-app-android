@@ -15,30 +15,28 @@ class ExerciseDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupView()
-        setupListeners()
     }
 
     private fun setupView() {
+        setupToolbar()
+
         val exercise = intent.getSerializableExtra("exercise", Exercise::class.java)
 
         exercise?.let {
-            with(binding){
-                toolbar.toolbarTitle.text = it.name
-
-                with(itemExerciseDetails){
+            with(binding.itemExerciseDetails){
+                    exerciseName.text = it.name
                     primaryMuscle.text = it.primaryMuscle.replaceFirstChar { char -> char.uppercase() }
                     descriptionText.text = it.description
                     equipmentName.text = it.equipment
 
-                    Utilities.embedYTLink(itemExerciseDetails.ytLink, exercise.name)
-                }
-
+                    Utilities.embedYTLink(ytLink, it.name)
             }
         }
     }
 
-    private fun setupListeners() {
+    private fun setupToolbar() {
         with(binding){
+            toolbar.toolbarTitle.text = ""
             toolbar.backButton.setOnClickListener {
                 onBackPressedDispatcher.onBackPressed()
             }
