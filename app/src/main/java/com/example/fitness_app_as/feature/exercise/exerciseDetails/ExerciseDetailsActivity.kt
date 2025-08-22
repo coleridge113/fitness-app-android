@@ -2,6 +2,8 @@ package com.example.fitness_app_as.feature.exercise.exerciseDetails
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.example.fitness_app_as.R
 import com.example.fitness_app_as.databinding.ActivityExerciseDetailsBinding
 import com.example.fitness_app_as.domain.Exercise
 import com.example.fitness_app_as.utilities.Utilities

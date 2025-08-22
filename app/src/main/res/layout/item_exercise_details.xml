@@ -1,8 +1,8 @@
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="16dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="8dp"
@@ -23,7 +23,8 @@
             android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:textColor="@color/black"
             android:gravity="center"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/primary_muscle"
@@ -33,7 +34,8 @@
             android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
             android:textColor="@color/purple_700"
             android:gravity="center"
-            android:paddingBottom="16dp"/>
+            android:paddingBottom="16dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
@@ -42,7 +44,8 @@
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/description_text"
@@ -51,7 +54,8 @@
             android:text="Performed on a preacher bench to isolate the biceps."
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="@color/black"
-            android:paddingBottom="12dp"/>
+            android:paddingBottom="12dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
@@ -60,7 +64,8 @@
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/equipment_name"
@@ -69,7 +74,8 @@
             android:text="Barbell"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textColor="@color/black"
-            android:paddingBottom="12dp"/>
+            android:paddingBottom="12dp"
+            tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
@@ -78,7 +84,8 @@
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/yt_link"
@@ -86,10 +93,13 @@
             android:layout_height="wrap_content"
             android:text="youtube_link"
             android:textColor="@color/purple_700"
-            android:autoLink="web"
             android:linksClickable="true"
             android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorLink="@android:color/holo_blue_dark"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
