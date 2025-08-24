@@ -1,95 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingHorizontal="20dp">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="8dp"
+    app:strokeColor="@color/light_gray"
+    app:strokeWidth="1dp">
 
-    <TextView
-        android:id="@+id/primaryMuscle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="@dimen/toolbar_bottom_margin"
-        tools:text="Primary Muscle Here"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Description:"
-        android:layout_marginTop="20dp"
-        tools:ignore="HardcodedText"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/primaryMuscle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/exercise_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="exercise_name"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/descriptionText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        tools:text="Description Text Here"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/descriptionLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/primary_muscle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="primary_muscle"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            android:textColor="@color/purple_700"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/equipmentLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Equipment: "
-        tools:ignore="HardcodedText"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/descriptionText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description:"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/equipmentName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        tools:text="Equipment Text Here"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/equipmentLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Performed on a preacher bench to isolate the biceps."
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:paddingBottom="12dp"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/ytLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="YouTube Link:"
-        tools:ignore="HardcodedText"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/equipmentName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Equipment:"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/ytLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:linksClickable="true"
-        android:textColorLink="@android:color/holo_blue_dark"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        tools:text="YouTube Link Here"
-        android:textSize="@dimen/standard_text_size"
-        app:layout_constraintTop_toBottomOf="@id/ytLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/equipment_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Barbell"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/black"
+            android:paddingBottom="12dp"
+            tools:ignore="HardcodedText" />
 
-</LinearLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YouTube Link:"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/yt_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="youtube_link"
+            android:textColor="@color/purple_700"
+            android:linksClickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorLink="@android:color/holo_blue_dark"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:paddingBottom="4dp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

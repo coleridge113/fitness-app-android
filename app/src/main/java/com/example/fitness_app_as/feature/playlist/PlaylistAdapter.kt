@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitness_app_as.databinding.PlaylistItemBinding
+import com.example.fitness_app_as.databinding.CardItemSmallBinding
 import com.example.fitness_app_as.domain.Playlist
 
 class PlaylistAdapter(
@@ -14,7 +14,7 @@ class PlaylistAdapter(
     private val onItemClick: (Playlist) -> Unit
 ) : RecyclerView.Adapter<PlaylistAdapter.PlaylistItemViewHolder>() {
 
-    inner class PlaylistItemViewHolder(val binding: PlaylistItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class PlaylistItemViewHolder(val binding: CardItemSmallBinding) : RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<Playlist>() {
         override fun areItemsTheSame(
@@ -41,8 +41,7 @@ class PlaylistAdapter(
         parent: ViewGroup,
         viewType: Int
     ): PlaylistItemViewHolder {
-        val binding = PlaylistItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PlaylistItemViewHolder(binding)
+        return PlaylistItemViewHolder(CardItemSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(

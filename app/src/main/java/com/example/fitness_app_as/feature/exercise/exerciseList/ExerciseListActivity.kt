@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fitness_app_as.R
 import com.example.fitness_app_as.databinding.ActivityExerciseListBinding
 import com.example.fitness_app_as.feature.exercise.exerciseDetails.ExerciseDetailsActivity
 import com.example.fitness_app_as.feature.playlist.PlaylistActivity
@@ -83,6 +84,7 @@ class ExerciseListActivity : AppCompatActivity() {
 
     private fun setupToolbar() {
         with(binding.toolbar){
+            toolbarTitle.text = getString(R.string.exercise_toolbar_title)
             backButton.visibility = View.GONE
         }
 

@@ -2,7 +2,7 @@
     <string name="app_name">fitness-app</string>
 
     // Exercise
-    <string name="exercise_toolbar_title">Exercise</string>
+    <string name="exercise_toolbar_title">Exercises</string>
 
     // Playlist
     <string name="playlist_toolbar_title">Playlist</string>

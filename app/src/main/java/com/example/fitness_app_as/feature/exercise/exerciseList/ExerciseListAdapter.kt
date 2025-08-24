@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fitness_app_as.databinding.ExerciseItemBinding
+import com.example.fitness_app_as.databinding.CardItemSmallBinding
 import com.example.fitness_app_as.domain.Exercise
 
 class ExerciseListAdapter(
     private val onItemClick:(Exercise) -> Unit
 ) : RecyclerView.Adapter<ExerciseListAdapter.ExerciseItemViewHolder>() {
 
-    inner class ExerciseItemViewHolder(val binding: ExerciseItemBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ExerciseItemViewHolder(val binding: CardItemSmallBinding): RecyclerView.ViewHolder(binding.root)
 
     private val diffCallback = object : DiffUtil.ItemCallback<Exercise>() {
         override fun areItemsTheSame(
@@ -40,7 +40,7 @@ class ExerciseListAdapter(
         parent: ViewGroup,
         viewType: Int
     ): ExerciseItemViewHolder {
-        val binding = ExerciseItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = CardItemSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ExerciseItemViewHolder(binding)
     }
 
