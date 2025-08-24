@@ -11,14 +11,13 @@
         android:src="@drawable/ic_bullet_item"
         android:layout_gravity="center"
         android:layout_marginEnd="12dp"
-        tools:ignore="ContentDescription"
-        />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_exercise"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Playlist Exercise Item"
+        android:text="playlist_exercise_item"
         android:textSize="@dimen/standard_text_size"
         android:layout_gravity="center"
         tools:ignore="HardcodedText" />
