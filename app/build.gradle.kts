@@ -63,13 +63,18 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
-    //Hilt Dagger
+    // Hilt Dagger
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    //Swipe Refresh
+    // Swipe Refresh
     implementation(libs.androidx.swiperefreshlayout)
 
-    //Fragment
+    // Fragment
     implementation(libs.androidx.fragment.ktx)
+
+    // Room Database
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
 }
