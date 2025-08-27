@@ -5,6 +5,9 @@ import androidx.room.Room
 import com.example.fitness_app_as.data.local.AppDatabase
 import com.example.fitness_app_as.data.local.dao.ExerciseDao
 import com.example.fitness_app_as.data.local.dao.PlaylistDao
+import com.example.fitness_app_as.data.local.repository.Repository
+import com.example.fitness_app_as.data.local.repository.RepositoryImpl
+import com.example.fitness_app_as.network.exercise.ExerciseRemoteSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +33,11 @@ class DatabaseModule {
     @Provides
     fun providePlaylistDao(db: AppDatabase): PlaylistDao {
         return db.playlistDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRepository(db: AppDatabase, exerciseRemoteSource: ExerciseRemoteSource): Repository {
+        return RepositoryImpl(db, exerciseRemoteSource)
     }
 }

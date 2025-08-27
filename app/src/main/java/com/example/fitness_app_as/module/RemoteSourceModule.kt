@@ -1,5 +1,8 @@
 package com.example.fitness_app_as.module
 
+import com.example.fitness_app_as.data.local.AppDatabase
+import com.example.fitness_app_as.data.local.repository.Repository
+import com.example.fitness_app_as.data.local.repository.RepositoryImpl
 import com.example.fitness_app_as.network.exercise.ExerciseRemoteSource
 import com.example.fitness_app_as.network.exercise.ExerciseService
 import com.example.fitness_app_as.network.playlist.PlaylistRemoteSource
