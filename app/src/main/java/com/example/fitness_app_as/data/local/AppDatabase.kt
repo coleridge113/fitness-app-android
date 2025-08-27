@@ -7,7 +7,7 @@ import com.example.fitness_app_as.data.local.dao.ExerciseDao
 import com.example.fitness_app_as.data.local.dao.PlaylistDao
 import com.example.fitness_app_as.data.local.entity.Exercise
 import com.example.fitness_app_as.data.local.entity.Playlist
-import com.example.fitness_app_as.utilities.IntListConverter
+import com.example.fitness_app_as.data.local.converter.IntListConverter
 
 @Database(entities = [Exercise::class, Playlist::class], version = 1)
 @TypeConverters(IntListConverter::class)

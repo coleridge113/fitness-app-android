@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.fitness_app_as.utilities.IntListConverter
+import com.example.fitness_app_as.data.local.converter.IntListConverter
 
 @Entity(tableName = "playlist")
 @TypeConverters(IntListConverter::class)

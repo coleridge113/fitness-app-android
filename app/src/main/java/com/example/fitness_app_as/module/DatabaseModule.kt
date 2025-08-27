@@ -3,6 +3,8 @@ package com.example.fitness_app_as.module
 import android.content.Context
 import androidx.room.Room
 import com.example.fitness_app_as.data.local.AppDatabase
+import com.example.fitness_app_as.data.local.dao.ExerciseDao
+import com.example.fitness_app_as.data.local.dao.PlaylistDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,8 +23,12 @@ class DatabaseModule {
     }
 
     @Provides
-    fun provideExerciseDao(db: AppDatabase) = db.exerciseDao()
+    fun provideExerciseDao(db: AppDatabase): ExerciseDao {
+        return db.exerciseDao()
+    }
 
     @Provides
-    fun providePlaylistDao(db: AppDatabase) = db.playlistDao()
+    fun providePlaylistDao(db: AppDatabase): PlaylistDao {
+        return db.playlistDao()
+    }
 }

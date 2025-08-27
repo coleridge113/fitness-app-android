@@ -14,13 +14,13 @@ class ExerciseListViewModel @Inject constructor(
     private val exerciseRemoteSource: ExerciseRemoteSource
 ) : ViewModel() {
 
-    private val mutableExerciseListState: MutableSharedFlow<ExerciseListState> = MutableSharedFlow()
-    val exerciseListState = mutableExerciseListState.asSharedFlow()
+    private val _exerciseListState: MutableSharedFlow<ExerciseListState> = MutableSharedFlow()
+    val exerciseListState = _exerciseListState.asSharedFlow()
 
     fun getExerciseItems() {
         viewModelScope.launch {
             val exercises = exerciseRemoteSource.getExerciseItems()
-            mutableExerciseListState.emit(ExerciseListState.LoadExercises(exercises))
+            _exerciseListState.emit(ExerciseListState.LoadExercises(exercises))
         }
     }
 
