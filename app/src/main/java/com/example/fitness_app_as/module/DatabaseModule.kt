@@ -8,6 +8,7 @@ import com.example.fitness_app_as.data.local.dao.PlaylistDao
 import com.example.fitness_app_as.data.local.repository.Repository
 import com.example.fitness_app_as.data.local.repository.RepositoryImpl
 import com.example.fitness_app_as.network.exercise.ExerciseRemoteSource
+import com.example.fitness_app_as.network.playlist.PlaylistRemoteSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,7 +38,15 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideRepository(db: AppDatabase, exerciseRemoteSource: ExerciseRemoteSource): Repository {
-        return RepositoryImpl(db, exerciseRemoteSource)
+    fun provideRepository(
+        db: AppDatabase,
+        exerciseRemoteSource: ExerciseRemoteSource,
+        playlistRemoteSource: PlaylistRemoteSource
+    ): Repository {
+        return RepositoryImpl(
+            db,
+            exerciseRemoteSource,
+            playlistRemoteSource
+        )
     }
 }

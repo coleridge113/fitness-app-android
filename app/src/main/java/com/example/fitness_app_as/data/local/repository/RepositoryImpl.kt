@@ -2,17 +2,21 @@ package com.example.fitness_app_as.data.local.repository
 
 import com.example.fitness_app_as.data.local.AppDatabase
 import com.example.fitness_app_as.data.local.entity.ExerciseCache
+import com.example.fitness_app_as.data.local.entity.PlaylistCache
 import com.example.fitness_app_as.data.mapper.mapToDomain
 import com.example.fitness_app_as.data.mapper.mapToLocal
 import com.example.fitness_app_as.domain.Exercise
+import com.example.fitness_app_as.domain.Playlist
 import com.example.fitness_app_as.network.exercise.ExerciseRemoteSource
+import com.example.fitness_app_as.network.playlist.PlaylistRemoteSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(
     private val db: AppDatabase,
-    private val exerciseRemoteSource: ExerciseRemoteSource
+    private val exerciseRemoteSource: ExerciseRemoteSource,
+    private val playlistRemoteSource: PlaylistRemoteSource
 ) : Repository {
     override suspend fun getExerciseItems(): List<Exercise> {
         return withContext(Dispatchers.IO) {
@@ -28,7 +32,24 @@ class RepositoryImpl @Inject constructor(
     }
 
     override suspend fun insertExercises(exercises: List<ExerciseCache>) {
-        return db.exerciseDao().insertExercises(exercises)
+        db.exerciseDao().insertExercises(exercises)
+    }
+
+    override suspend fun getAllPlaylists(): List<Playlist> {
+        return withContext(Dispatchers.IO) {
+            val cached = db.playlistDao().getAllPlaylists()
+            if(cached.isNotEmpty()){
+                cached.mapToDomain()
+            } else {
+                val remote = playlistRemoteSource.getAllPlaylists()
+                db.playlistDao().insertAllPlaylists(remote.mapToLocal())
+                remote
+            }
+        }
+    }
+
+    override suspend fun insertAllPlaylists(playlists: List<PlaylistCache>) {
+        db.playlistDao().insertAllPlaylists(playlists)
     }
 
 }
