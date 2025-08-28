@@ -5,14 +5,10 @@ import com.example.fitness_app_as.domain.Exercise
 import com.example.fitness_app_as.domain.Playlist
 import javax.inject.Inject
 
-class PlaylistUseCase @Inject constructor(
+class GetExercisesForPlaylistUseCase @Inject constructor(
     private val repository: Repository
-) {
-    suspend fun getAllPlaylists(): List<Playlist> {
-        return repository.getAllPlaylists()
-    }
-
-    suspend fun getExercisesForPlaylist(playlist: Playlist): List<Exercise> {
+){
+    suspend operator fun invoke(playlist: Playlist): List<Exercise> {
         return repository.getExerciseItems().filter { it.id in playlist.exerciseIds }
     }
 }
